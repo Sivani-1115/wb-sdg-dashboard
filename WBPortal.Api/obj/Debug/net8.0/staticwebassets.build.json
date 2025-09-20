@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "756sMjdpMrwcGyOxfsd5F4UyjV1GfhzHVd5JCrdp6rs=",
+  "Source": "WBPortal.Api",
+  "BasePath": "_content/WBPortal.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
