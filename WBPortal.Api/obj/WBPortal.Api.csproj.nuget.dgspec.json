@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/wb-sdg-dashboard/WBPortal.Api/WBPortal.Api.csproj": {}
+    "C:\\Users\\majid\\OneDrive\\Desktop\\SDG\\wb-sdg-dashboard\\WBPortal.Api\\WBPortal.Api.csproj": {}
   },
   "projects": {
-    "/workspaces/wb-sdg-dashboard/WBPortal.Api/WBPortal.Api.csproj": {
+    "C:\\Users\\majid\\OneDrive\\Desktop\\SDG\\wb-sdg-dashboard\\WBPortal.Api\\WBPortal.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/wb-sdg-dashboard/WBPortal.Api/WBPortal.Api.csproj",
+        "projectUniqueName": "C:\\Users\\majid\\OneDrive\\Desktop\\SDG\\wb-sdg-dashboard\\WBPortal.Api\\WBPortal.Api.csproj",
         "projectName": "WBPortal.Api",
-        "projectPath": "/workspaces/wb-sdg-dashboard/WBPortal.Api/WBPortal.Api.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/wb-sdg-dashboard/WBPortal.Api/obj/",
+        "projectPath": "C:\\Users\\majid\\OneDrive\\Desktop\\SDG\\wb-sdg-dashboard\\WBPortal.Api\\WBPortal.Api.csproj",
+        "packagesPath": "C:\\Users\\majid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\majid\\OneDrive\\Desktop\\SDG\\wb-sdg-dashboard\\WBPortal.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\majid\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -109,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.414/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

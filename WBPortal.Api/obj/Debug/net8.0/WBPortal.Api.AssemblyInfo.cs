@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WBPortal.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b91fa5ce7d6b5b9a9b892fd39452cdb4063725c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0b462aae785372756c48f2fd086e847d61d84ca")]
 [assembly: System.Reflection.AssemblyProductAttribute("WBPortal.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WBPortal.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

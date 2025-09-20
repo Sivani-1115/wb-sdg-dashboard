@@ -18,15 +18,30 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public IActionResult Register([FromBody] RegisterRequest request)
     {
-        var user = new User
+        try
         {
-            Username = request.Username,
-            Email = request.Email,
-            Password = request.Password,
-            Role = request.Role
-        };
-        _authService.Register(user);
-        return Ok("User registered successfully");
+            if (string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Email) || 
+                string.IsNullOrEmpty(request.Password) || string.IsNullOrEmpty(request.Role))
+            {
+                return BadRequest("All fields are required");
+            }
+
+            var user = new User
+            {
+                Username = request.Username,
+                Email = request.Email,
+                Password = request.Password,
+                Role = request.Role
+            };
+            _authService.Register(user);
+            Console.WriteLine($"User registered successfully: {request.Username}");
+            return Ok("User registered successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Registration error: {ex.Message}");
+            return BadRequest($"Registration failed: {ex.Message}");
+        }
     }
 
     [HttpPost("login")]
@@ -34,12 +49,23 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var token = _authService.Login(request.Username, request.Password);
-                Console.WriteLine(token);
-            return Ok(new AuthResponse { Token = token });
+            if (string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
+            {
+                return BadRequest("Username and password are required");
+            }
+
+            var result = _authService.Login(request.Username, request.Password);
+            Console.WriteLine($"Login successful for user: {request.Username}");
+            return Ok(new AuthResponse { Token = result.Token, Role = result.Role });
         }
-        catch
+        catch (ArgumentException ex)
         {
+            Console.WriteLine($"Login failed - {ex.Message}");
+            return Unauthorized(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Login error: {ex.Message}");
             return Unauthorized("Invalid credentials");
         }
     }

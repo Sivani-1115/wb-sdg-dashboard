@@ -1,0 +1,91 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <div class="wb-logo">
+        <svg
+          width="60"
+          height="60"
+          viewBox="0 0 60 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="30" cy="30" r="30" fill="#1E3A8A" />
+          <path d="M30 10L40 25H35V45H25V25H20L30 10Z" fill="white" />
+          <path d="M15 35H45V40H15V35Z" fill="white" />
+        </svg>
+      </div>
+      <h1>Create Account</h1>
+      <p>Join the World Bank SDG Dashboard</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="register-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="registerData.username"
+          name="username"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="registerData.email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="registerData.password"
+          name="password"
+          placeholder="Enter your password (min 6 characters)"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" [(ngModel)]="registerData.role" name="role" required>
+          @for (role of roles; track role.value) {
+          <option [value]="role.value">{{ role.label }}</option>
+          }
+        </select>
+      </div>
+
+      @if (errorMessage()) {
+      <div class="error-message">
+        {{ errorMessage() }}
+      </div>
+      } @if (successMessage()) {
+      <div class="success-message">
+        {{ successMessage() }}
+      </div>
+      }
+
+      <button type="submit" class="register-button" [disabled]="isLoading()">
+        @if (isLoading()) {
+        <span class="spinner"></span>
+        Creating Account... } @else { Create Account }
+      </button>
+    </form>
+
+    <div class="register-footer">
+      <p>
+        Already have an account?
+        <button type="button" class="link-button" (click)="goToLogin()">Sign in here</button>
+      </p>
+    </div>
+  </div>
+</div>

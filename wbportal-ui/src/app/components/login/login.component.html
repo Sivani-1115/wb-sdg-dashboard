@@ -1,0 +1,66 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="wb-logo">
+        <svg
+          width="60"
+          height="60"
+          viewBox="0 0 60 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="30" cy="30" r="30" fill="#1E3A8A" />
+          <path d="M30 10L40 25H35V45H25V25H20L30 10Z" fill="white" />
+          <path d="M15 35H45V40H15V35Z" fill="white" />
+        </svg>
+      </div>
+      <h1>World Bank Portal</h1>
+      <p>Sign in to access the SDG Dashboard</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="loginData.username"
+          name="username"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="loginData.password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+
+      @if (errorMessage()) {
+      <div class="error-message">
+        {{ errorMessage() }}
+      </div>
+      }
+
+      <button type="submit" class="login-button" [disabled]="isLoading()">
+        @if (isLoading()) {
+        <span class="spinner"></span>
+        Signing in... } @else { Sign In }
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>
+        Don't have an account?
+        <button type="button" class="link-button" (click)="goToRegister()">Register here</button>
+      </p>
+    </div>
+  </div>
+</div>

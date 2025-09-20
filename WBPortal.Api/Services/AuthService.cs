@@ -23,13 +23,35 @@ namespace WBPortal.Api.Services
             _context.SaveChanges();
         }
 
-        public string Login(string username, string password)
+        public LoginResult Login(string username, string password)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
-            if (user == null || !PasswordHelper.VerifyPassword(password, user.Password))
-                throw new Exception("Invalid credentials");
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentException("Username cannot be empty");
+            
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentException("Password cannot be empty");
 
-            return JwtHelper.GenerateToken(user.Id, user.Role, _config["JwtSettings:SecretKey"]);
+            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            if (user == null)
+            {
+                Console.WriteLine($"User not found: {username}");
+                throw new ArgumentException("Invalid username or password");
+            }
+
+            if (!PasswordHelper.VerifyPassword(password, user.Password))
+            {
+                Console.WriteLine($"Password verification failed for user: {username}");
+                throw new ArgumentException("Invalid username or password");
+            }
+
+            Console.WriteLine($"User found and password verified for: {username}");
+            var token = JwtHelper.GenerateToken(user.Id, user.Role, _config["JwtSettings:SecretKey"]);
+            
+            return new LoginResult
+            {
+                Token = token,
+                Role = user.Role
+            };
         }
     }
 }

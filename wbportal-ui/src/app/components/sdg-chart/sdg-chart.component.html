@@ -1,0 +1,46 @@
+<div class="sdg-chart-container">
+  <div class="chart-header">
+    <h3>{{ projectTitle }} - SDG Scores</h3>
+    <div class="average-score">
+      <span class="score-label">Average Score:</span>
+      <span class="score-value" [style.color]="getScoreColor(getAverageScore())">
+        {{ getAverageScore() }}%
+      </span>
+      <span class="score-grade">{{ getScoreLabel(getAverageScore()) }}</span>
+    </div>
+  </div>
+
+  <div class="sdg-scores-grid">
+    @for (score of sdgScores; track score.sdgNumber) {
+    <div class="sdg-score-item">
+      <div class="sdg-header">
+        <div class="sdg-number">SDG {{ score.sdgNumber }}</div>
+        <div class="sdg-title">{{ score.sdgTitle }}</div>
+      </div>
+
+      <div class="score-visualization">
+        <div class="score-bar">
+          <div
+            class="score-fill"
+            [style.width.%]="score.score"
+            [style.background-color]="getScoreColor(score.score)"
+          ></div>
+        </div>
+        <div class="score-text">
+          <span class="score-value">{{ score.score }}%</span>
+          <span class="score-label">{{ getScoreLabel(score.score) }}</span>
+        </div>
+      </div>
+
+      <div class="score-description">{{ score.description }}</div>
+    </div>
+    }
+  </div>
+
+  @if (sdgScores.length === 0) {
+  <div class="no-data">
+    <div class="no-data-icon">📊</div>
+    <p>No SDG scores available for this project</p>
+  </div>
+  }
+</div>
